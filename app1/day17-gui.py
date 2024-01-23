@@ -13,11 +13,12 @@ list_box = sg.Listbox(values=functions.get_todos(),
 edit_button = sg.Button("Edit")
 
 # getting the list from todos.txt
+Layout = [[[label],
+        [input_box, add_button]],
+        [list_box, edit_button]]
 
 window = sg.Window('My To-Do app',
-                   layout=[[[label],
-                            [input_box, add_button]],
-                           [list_box, edit_button]],
+                   layout=Layout,
                    font=('Helvetica', 10))
 while True:
     event, values = window.read()  # displays the window on the screen
