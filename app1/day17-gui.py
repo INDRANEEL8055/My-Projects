@@ -12,10 +12,14 @@ list_box = sg.Listbox(values=functions.get_todos(),
                       size=[45, 10])
 edit_button = sg.Button("Edit")
 
+complete_button = sg.Button("Complete")
+
+exit_button = sg.Button("Exit")
 # getting the list from todos.txt
 Layout = [[[label],
         [input_box, add_button]],
-        [list_box, edit_button]]
+        [list_box, edit_button, complete_button],
+        [exit_button]]
 
 window = sg.Window('My To-Do app',
                    layout=Layout,
@@ -44,7 +48,20 @@ while True:
             functions.write_todos(todos)
             window['todos'].update(values=todos)
             # to get the updated list in real time
-        case 'todo':
-            window['todo'].update(value=values['todo'][0])
+
+        case "Complete":
+            todo_to_complete = values['todos'][0]
+            todos = functions.get_todos()
+            todos.remove(todo_to_complete)
+            functions.write_todos(todos)
+            window['todos'].update(values=todos)
+            window['todo'].update(value='')
+
+        case 'todos':
+            window['todo'].update(value=values['todos'][0])
+
+        case 'Exit':
+            break
+
 
 window.close()  # closes the window
