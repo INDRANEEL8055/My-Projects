@@ -9,16 +9,16 @@ label = sg.Text("Type in a To-Do")  # creates text on window
 input_box = sg.InputText(tooltip="Enter To-DO", key="todo")
 # as the input comes in dictionary form we added key so that
 # its easier to take its value to add it in to the todo
-add_button = sg.Button("Add")
+add_button = sg.Button("Add", size=10)
 list_box = sg.Listbox(values=functions.get_todos(),
                       key='todos',
                       enable_events=True,
-                      size=[45, 10])
-edit_button = sg.Button("Edit")
+                      size=[55, 20])
+edit_button = sg.Button("Edit", size=10)
 
-complete_button = sg.Button("Complete")
+complete_button = sg.Button("Complete", size=10)
 
-exit_button = sg.Button("Exit")
+exit_button = sg.Button("Exit", size=10)
 # getting the list from todos.txt
 Layout = [[clock],
           [[label],
