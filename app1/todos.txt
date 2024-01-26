@@ -2,10 +2,5 @@ run
 Master Python
 adding edit button
 shit complete
-add the new todoadd new todo 2
 add new todo as
-add new todo asasda
-add new todo asasdaasdsad
-add new todo asasdaasdsadadasd
-add new todo asasdaasdsadadasdasdadsa
-add new tod
+
