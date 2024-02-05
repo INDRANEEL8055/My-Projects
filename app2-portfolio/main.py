@@ -21,14 +21,21 @@ content2 = """ Below you can find
 
 st.write(content2)
 
-col3, col4 = st.columns(2)  # dividing the my projects in two coloumns
+col3, emptycol, col4 = st.columns([1.5, 0.5, 1.5])  # dividing the my projects in two coloumns
 
-df = pandas.read_csv("data.csv",sep=";")
+df = pandas.read_csv("data.csv", sep=";")
 with col3:
     for index, row in df[:10].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])  # because images are not in the main.py directory but rather in image folder
+        st.write(f"[Source code]({row['url']})")
 
 with col4:
     for index, row in df[10:].iterrows():
         st.header(row["title"])
+        st.write(row["description"])
+        st.image("images/" + row["image"])
+        st.write(f"[Source code]({row['url']})")
+
 
