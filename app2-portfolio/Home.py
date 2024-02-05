@@ -1,11 +1,17 @@
 import streamlit as st
 import pandas
+import os
 st.set_page_config(layout="wide")
 
 col1, col2 = st.columns(2)
 
 with col1:
     st.image("images/photo.png")
+    image_path = "images/photo.png"
+    if os.access(image_path,os.R_OK):
+        print("file is readable")
+    else:
+        print("file is not readable ")
 
 with col2:
     st.title("Indraneel Jain")
