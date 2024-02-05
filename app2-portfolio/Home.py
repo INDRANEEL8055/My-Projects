@@ -28,7 +28,7 @@ with col3:
     for index, row in df[:10].iterrows():
         st.header(row["title"])
         st.write(row["description"])
-        st.image("images/" + row["image"])  # because images are not in the main.py directory but rather in image folder
+        st.image("images/" + row["image"])  # because images are not in the Home.py directory but rather in image folder
         st.write(f"[Source code]({row['url']})")
 
 with col4:
