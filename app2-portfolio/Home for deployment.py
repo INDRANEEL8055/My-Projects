@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas
 import os
+
 st.set_page_config(layout="wide")
 
 col1, col2 = st.columns(2)
@@ -8,7 +9,7 @@ col1, col2 = st.columns(2)
 with col1:
     st.image("app2-portfolio/images/photo.png")
     image_path = "app2-portfolio/images/photo.png"
-    if os.access(image_path,os.R_OK):
+    if os.access(image_path, os.R_OK):
         print("file is readable")
     else:
         print("file is not readable ")
@@ -34,7 +35,8 @@ with col3:
     for index, row in df[:10].iterrows():
         st.header(row["title"])
         st.write(row["description"])
-        st.image("app2-portfolio/images/" + row["image"])  # because images are not in the Home.py directory but rather in image folder
+        st.image("app2-portfolio/images/" + row[
+            "image"])  # because images are not in the Home.py directory but rather in image folder
         st.write(f"[Source code]({row['url']})")
 
 with col4:
@@ -43,3 +45,5 @@ with col4:
         st.write(row["description"])
         st.image("app2-portfolio/images/" + row["image"])
         st.write(f"[Source code]({row['url']})")
+
+# final
