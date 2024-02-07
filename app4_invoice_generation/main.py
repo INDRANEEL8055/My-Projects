@@ -19,7 +19,7 @@ for filepath in filepaths:
     pdf.cell(w=50, h=8, txt=f"Invoice nr.{invoice_nr}", ln=1)
 
     pdf.set_font(family="Times", size=16, style="B")
-    pdf.cell(w=50, h=8, txt=f"Date {Date}",ln=1)
+    pdf.cell(w=50, h=8, txt=f"Date {Date}", ln=1)
 
     df = pd.read_excel(filepath, sheet_name="Sheet 1")
 
@@ -46,6 +46,23 @@ for filepath in filepaths:
         pdf.cell(w=30, h=8, txt=str(row["price_per_unit"]), border=1)
         pdf.cell(w=30, h=8, txt=str(row["total_price"]), border=1, ln=1)
 
+    # For calculating total
+    total_sum = df["total_price"].sum()
+    pdf.cell(w=30, h=8, txt="", border=1)
+    pdf.cell(w=70, h=8, txt="", border=1)
+    pdf.cell(w=35, h=8, txt="", border=1)
+    pdf.cell(w=30, h=8, txt="", border=1)
+    pdf.cell(w=30, h=8, txt=str(total_sum), border=1, ln=1)
 
+    # Add total sum sentence
+    pdf.set_font(family="Times", style="B", size=12)
+    pdf.set_text_color(10, 10, 10)
+    pdf.cell(w=30, h=8, txt=f"The total price is {total_sum}", ln=1)
+
+    # Add company name and logo
+    pdf.set_font(family="Times", size=12, style="B")
+    pdf.set_text_color(10, 10, 10)
+    pdf.cell(w=22, h=8, txt=f"PythonHow")
+    pdf.image("pythonhow.png", w=10)
 
     pdf.output(f"PDFs/{filename}.pdf")
